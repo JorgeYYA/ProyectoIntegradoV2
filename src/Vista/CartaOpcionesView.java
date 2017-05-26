@@ -45,6 +45,7 @@ public class CartaOpcionesView extends JFrame {
 	
 	String[] nombreOpcion = {"PLATOS","BEBIDAS","BOCADILLOS","TAPAS","CAFES",
 	   "POSTRES"};
+	String miEnglish[] = {"CHOICE OF OPTIONS","Return", "Checkout Order"};
 	ImageIcon[] miArrayImagenes = {new ImageIcon(CartaOpcionesView.class.getResource("/img/platos.png")), 
 	new ImageIcon(CartaOpcionesView.class.getResource("/img/bebidas.jpg")),
 	new ImageIcon(CartaOpcionesView.class.getResource("/img/segundoPlato.jpg")),
@@ -53,13 +54,14 @@ public class CartaOpcionesView extends JFrame {
 	new ImageIcon(CartaOpcionesView.class.getResource("/img/restaurante.png"))};
 	
 	ImageIcon n;
-	JButton JbtnNewButton0, JbtnNewButton1, JbtnNewButton2, JbtnNewButton3, JbtnNewButton4;
+	JButton JbtnNewButton0, JbtnNewButton1, JbtnNewButton2, JbtnNewButton3, JbtnNewButton4,
+	btnVolver, btnFinalizarPedido;
 
 	JPanel panel;
 	Image miImagen;
 	Graphics g;
 	Component c;
-	JLabel lblFloridaRestaurante;
+	JLabel lblFloridaRestaurante, lblCartaDeOpciones;
 	public CartaOpcionesView() {
 		
 		
@@ -80,7 +82,11 @@ public class CartaOpcionesView extends JFrame {
 		contentPane.setLayout(new BorderLayout(0, 0));
 		setContentPane(contentPane);
 		
-		JLabel lblCartaDeOpciones = new JLabel("CARTA DE OPCIONES");
+		if(Inici.idioma == 0){
+		lblCartaDeOpciones = new JLabel("CARTA DE OPCIONES");
+		}else{
+			lblCartaDeOpciones = new JLabel(miEnglish[0]);	
+		}
 		lblCartaDeOpciones.setFont(new Font("AR CENA", Font.BOLD, 30));
 		lblCartaDeOpciones.setForeground(new Color(240, 238, 201));
 		lblCartaDeOpciones.setHorizontalAlignment(SwingConstants.CENTER);
@@ -178,7 +184,11 @@ public class CartaOpcionesView extends JFrame {
 		contentPane.add(panel_1, BorderLayout.SOUTH);
 		panel_1.setLayout(new FlowLayout(FlowLayout.RIGHT, 5, 5));
 		
-		JButton btnVolver = new JButton("VOLVER");
+		if(Inici.idioma == 0){
+		btnVolver = new JButton("VOLVER");
+		}else{
+			btnVolver = new JButton(miEnglish[1]);	
+		}
 		btnVolver.setBackground(new Color(133, 188, 195));
 		btnVolver.setFont(new Font("Tahoma", Font.BOLD, 13));
 		btnVolver.setForeground(new Color(240, 238, 201));
@@ -193,8 +203,11 @@ public class CartaOpcionesView extends JFrame {
 		});
 		panel_1.add(btnVolver);
 		
-		
-		JButton btnFinalizarPedido = new JButton("Finalizar Pedido");
+		if(Inici.idioma == 0){
+		btnFinalizarPedido = new JButton("Finalizar Pedido");
+		}else{
+			btnFinalizarPedido = new JButton(miEnglish[2]);	
+		}
 		btnFinalizarPedido.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				ControladorTotal ct = new ControladorTotal();

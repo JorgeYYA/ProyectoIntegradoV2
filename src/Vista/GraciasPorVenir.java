@@ -51,7 +51,8 @@ public class GraciasPorVenir extends JFrame implements ComponentListener, Action
 
 	//Los atributos sobre los que vamos a actuar
 	ButtonGroup botones = new ButtonGroup();
-	
+	JLabel lblTitulo;
+	JButton btnNewButton;
 	
 	JLabel[] imagenesLabel = new JLabel[12];
 	
@@ -111,7 +112,11 @@ public class GraciasPorVenir extends JFrame implements ComponentListener, Action
 		//anadimos el ComponentListener para modificar el tamano de las imagenes cuando la pantalla se redimensione
 		addComponentListener(this);
 		
-		JLabel lblTitulo = new JLabel("GRACIAS POR VENIR");
+		if(Inici.idioma == 0){
+		lblTitulo = new JLabel("GRACIAS POR VENIR");
+		}else{
+			lblTitulo = new JLabel("THANKS FOR COMING");
+		}
 		lblTitulo.setForeground(new Color(240, 238, 201));
 		lblTitulo.setHorizontalAlignment(SwingConstants.CENTER);
 		lblTitulo.setFont(new Font("AR CENA", Font.PLAIN, 60));
@@ -167,7 +172,11 @@ public class GraciasPorVenir extends JFrame implements ComponentListener, Action
 		lblDescripcion.setFont(new Font("Tahoma", Font.BOLD, 20));
 		panelDown.add(lblDescripcion);
 		
-		JButton btnNewButton = new JButton("Hacer otro pedido");
+		if(Inici.idioma == 0){
+		btnNewButton = new JButton("Hacer otro pedido");
+		}else{
+			btnNewButton = new JButton("Make another order");
+		}
 		btnNewButton.setForeground(new Color(240, 238, 201));
 		btnNewButton.setBackground(new Color(133, 188, 195));
 		btnNewButton.setFont(new Font("Tahoma", Font.BOLD, 20));
@@ -184,7 +193,11 @@ public class GraciasPorVenir extends JFrame implements ComponentListener, Action
 		horizontalStrut = Box.createHorizontalStrut(80);
 		panelDown.add(horizontalStrut);
 		
+		if(Inici.idioma == 0){
 		btnSalir = new JButton("Salir");
+		}else{
+			btnSalir = new JButton("Exit");	
+		}
 		btnSalir.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
