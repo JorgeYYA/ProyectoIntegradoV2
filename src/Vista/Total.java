@@ -40,6 +40,7 @@ public class Total extends JFrame {
 	private Component horizontalStrut;
 	private Component verticalStrut;
 	static public JTable table;
+	JLabel lblLaCuenta;
 	
 	ControladorTotal ct = new ControladorTotal();
 	private JButton btnExportarAPdf;
@@ -62,7 +63,11 @@ public class Total extends JFrame {
 		contentPane.setBackground(new Color(72, 162, 172));
 		setContentPane(contentPane);
 		
-		JLabel lblLaCuenta = new JLabel("La cuenta");
+		if(Inici.idioma == 0){
+		lblLaCuenta = new JLabel("La cuenta");
+		}else{
+			lblLaCuenta = new JLabel("The Ticket");
+		}
 		lblLaCuenta.setForeground(new Color(240, 238, 201));
 		lblLaCuenta.setHorizontalAlignment(SwingConstants.CENTER);
 		lblLaCuenta.setFont(new Font("AR CENA", Font.PLAIN, 40));
@@ -73,7 +78,11 @@ public class Total extends JFrame {
 		panel.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
 		panel.setBackground(new Color(72, 162, 172));
 		
+		if(Inici.idioma == 0){
 		btnExportarAPdf = new JButton("Exportar a PDF");
+		}else{
+			btnExportarAPdf = new JButton("Export to PDF");
+		}
 		btnExportarAPdf.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				JFileChooser chooser = new JFileChooser();
@@ -91,7 +100,11 @@ public class Total extends JFrame {
 		verticalStrut = Box.createVerticalStrut(35);
 		panel.add(verticalStrut);
 		
+		if(Inici.idioma == 0){
 		botonVolver = new JButton("Volver");
+		}else{
+			botonVolver = new JButton("Exit");
+		}
 		botonVolver.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				
@@ -105,7 +118,12 @@ public class Total extends JFrame {
 		botonVolver.setFont(new Font("Tahoma", Font.BOLD, 20));
 		panel.add(botonVolver);
 		
-		botonPagar = new JButton("Pagar");
+		if(Inici.idioma == 0){
+			botonPagar = new JButton("Pagar");	
+		}else{
+			botonPagar = new JButton("Pay");
+		}
+		
 		botonPagar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				
@@ -122,12 +140,20 @@ public class Total extends JFrame {
 		horizontalStrut = Box.createHorizontalStrut(150);
 		panel.add(horizontalStrut);
 		
+		if(Inici.idioma == 0){
 		radioTarjeta = new JRadioButton("Tarjeta");
+		}else{
+			radioTarjeta = new JRadioButton("Card");
+		}
 		radioTarjeta.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		radioTarjeta.setBackground(new Color(72, 162, 172));
 		panel.add(radioTarjeta);
 		
+		if(Inici.idioma == 0){
 		radioEfectivo = new JRadioButton("Efectivo");
+		}else{
+			radioEfectivo = new JRadioButton("Cash");
+		}
 		radioEfectivo.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		radioEfectivo.setBackground(new Color(72, 162, 172));
 		panel.add(radioEfectivo);
