@@ -37,10 +37,10 @@ public class PantallaMenu extends JFrame implements ActionListener {
     private JTable listMenus; 
     private ArrayList<String> al;  
     private JPanel panel; 
-    private JButton btnCancelar; 
-     
+    private JButton btnCancelar, btnConfirmar; 
+    private JLabel lblNewLabel;
     public PantallaMenu() { 
-    	
+    String miEnglish[] = {"Select a menu","Confirm", "Cancel"}; 	
     	try {
 			this.setIconImage(ImageIO.read(new File("src/img/Icono.png")));
 		} catch (IOException e) {
@@ -55,8 +55,11 @@ public class PantallaMenu extends JFrame implements ActionListener {
         contentPane.setBorder(new EmptyBorder(5, 5, 5, 5)); 
         setContentPane(contentPane); 
         contentPane.setLayout(new BorderLayout(0, 0)); 
-         
-        JLabel lblNewLabel = new JLabel("Selecciona un men\u00FA:"); 
+        if(Inici.idioma == 0){ 
+        lblNewLabel = new JLabel("Selecciona un men\u00FA:"); 
+        }else{
+        	lblNewLabel = new JLabel(miEnglish[0]);	
+        }
         lblNewLabel.setForeground(Color.RED); 
         lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER); 
         lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 32)); 
@@ -89,14 +92,21 @@ public class PantallaMenu extends JFrame implements ActionListener {
         panel = new JPanel(); 
         contentPane.add(panel, BorderLayout.SOUTH); 
          
-          
-         JButton btnConfirmar = new JButton("Confirmar"); 
+         if(Inici.idioma == 0){ 
+         btnConfirmar = new JButton("Confirmar"); 
+         }else{
+        	 btnConfirmar = new JButton(miEnglish[1]); 
+         }
          panel.add(btnConfirmar); 
          btnConfirmar.setFont(new Font("Tahoma", Font.PLAIN, 16)); 
          btnConfirmar.addActionListener(this); 
          btnConfirmar.setActionCommand("Confirmar"); 
-          
+         
+         if(Inici.idioma == 0){
          btnCancelar = new JButton("Cancelar"); 
+         }else{
+        	 btnCancelar = new JButton(miEnglish[2]);  
+         }
          btnCancelar.setFont(new Font("Tahoma", Font.PLAIN, 16)); 
          btnCancelar.addActionListener(this); 
          btnCancelar.setActionCommand("Cancelar"); 
@@ -112,7 +122,7 @@ public class PantallaMenu extends JFrame implements ActionListener {
                               //Le pasamos esto a la cuenta para que lo muestre con el precio
                         	  dispose();
                               System.out.println(al.get(posicion));
-                              String menus[] = al.get(0).split(":");
+                              String menus[] = al.get(posicion).split(":");
                               
               					String NombreMenu = menus[0];
               					String PrecioMenu = menus[menus.length-1];
@@ -129,8 +139,11 @@ public class PantallaMenu extends JFrame implements ActionListener {
               					
                           } else { 
                               JOptionPane jo = new JOptionPane(); 
+                              if(Inici.idioma == 0){
                               jo.showMessageDialog(this, "Debes seleccionar un menu");
-                              
+                              }else{
+                            	  jo.showMessageDialog(this, "You must select a menu");  
+                              }
 
                           } 
                           break; 
